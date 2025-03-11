@@ -3,6 +3,7 @@ import streamlit as st
 from snowflake.snowpark.functions import col
 import requests
 import pandas as pd
+
 # Write directly to the app
 st.title("Customize Your Smoothie!:cherries:")
 st.write(
@@ -21,7 +22,8 @@ my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT
 #st.stop()
 
 #convert the Snowpark Dataframe to a Pandas Dataframe so we can use the LOC function pd_df=my_dataframe.to_pandas()
-st.dataframe.to_pandas()
+pd_df= my_dataframe.to_pandas()
+st.dataframe(pd_df, use_container_width=True)
 st.stop()
 
 ingredients_list = st.multiselect(
@@ -46,6 +48,7 @@ if ingredients_list:
 
     #st.write(my_insert_stmt)
     #st.stop()
+
     
     time_to_insert= st.button('Submit Order')
     if time_to_insert:
