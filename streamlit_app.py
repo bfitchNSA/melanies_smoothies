@@ -9,7 +9,7 @@ NAME_ON_ORDER = st.text_input('Name on Smoothie:')
 st.write('The name on your Smoothie will be:', NAME_ON_ORDER)
 
 # Assuming the connection is handled elsewhere
-cnx = st.connection()  # This gets the existing connection
+
 session = cnx.session()  # Retrieve the session object
 
 # Get the list of fruit options from Snowflake
